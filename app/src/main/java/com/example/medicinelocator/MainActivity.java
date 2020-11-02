@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initComponents();
-//
+//comment
         FillMedicineListTask medicineListTask = new FillMedicineListTask(medicineList, recent_container);
 //
         medicineListTask.execute();
