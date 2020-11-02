@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Medicine Locator</string>
+    <string name="search">Search</string>
+    <string name="medicine_name">Medicine name ..</string>
+    <string name="recent_search">Recent search</string>
+    <string name="governerate">Governerate</string>
+    <string name="city">City</string>
+</resources>
