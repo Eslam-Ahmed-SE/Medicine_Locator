@@ -6,27 +6,17 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView medicineList;
-    ConstraintLayout recent_container;
+    private RecyclerView medicineList;
+    private ConstraintLayout item_container;
+    private ShimmerFrameLayout medicines_loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initComponents();
-//comment
-        FillMedicineListTask medicineListTask = new FillMedicineListTask(medicineList, recent_container);
-//
+
+
+        FillMedicineListTask medicineListTask = new FillMedicineListTask(medicineList, this);
         medicineListTask.execute();
 //        if(medicineListTask.getStatus() == AsyncTask.Status.PENDING){
 //            // My AsyncTask has not started yet
@@ -53,11 +43,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void initComponents() {
         medicineList = findViewById(R.id.medList);
-        recent_container = findViewById(R.id.recent_container);
+        item_container = findViewById(R.id.recent_container);
+        medicines_loading = findViewById(R.id.medicines_loading);
 
         medicineList.setLayoutManager(new LinearLayoutManager(this));
         medicineList.setItemAnimator(new DefaultItemAnimator());
         Log.i("inf", "init comps");
+    }
+
+    public void showItemContaier(){
+        item_container.setVisibility(View.VISIBLE);
+        medicines_loading.setVisibility(View.GONE);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.medicinelocator;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.transition.Slide;
 import android.transition.Transition;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,11 +28,13 @@ import java.net.URL;
 public class FillMedicineListTask extends AsyncTask<Void,Void,Void> {
         RecyclerView medicineList;
         Medicine[] medicines;
-        ConstraintLayout recent_container;
+        Context context;
+        MainActivity mainActivity;
 
-        public FillMedicineListTask(RecyclerView mMedicineList, ConstraintLayout mRecent_container) {
+        public FillMedicineListTask(RecyclerView mMedicineList, MainActivity mContext) {
             medicineList = mMedicineList;
-            recent_container = mRecent_container;
+            context = mContext;
+            mainActivity = mContext;
         }
 
         @Override
@@ -72,7 +76,7 @@ public class FillMedicineListTask extends AsyncTask<Void,Void,Void> {
             super.onPostExecute(aVoid);
             Log.i("inf", "post executed");
             if ( medicines !=null ){
-                MedicineListAdapter mAdapter = new MedicineListAdapter(medicines);
+                MedicineListAdapter mAdapter = new MedicineListAdapter(medicines,context);
                 medicineList.setAdapter(mAdapter);
 
 //                Transition transition = new Slide(Gravity.TOP);
@@ -80,8 +84,7 @@ public class FillMedicineListTask extends AsyncTask<Void,Void,Void> {
 //                transition.addTarget(recent_container);
 //                TransitionManager.beginDelayedTransition((ViewGroup) recent_container.getParent(), transition);
 
-                recent_container.setVisibility(View.VISIBLE);
-
+                mainActivity.showItemContaier();
 
 //                id.setText(contacts[0].id);
 //                name.setText(contacts[0].name);

@@ -5,4 +5,12 @@
     <string name="recent_search">Recent search</string>
     <string name="governerate">Governerate</string>
     <string name="city">City</string>
+    <string name="address">Address:</string>
+    <string name="nearest_landmark">Nearest landmark:</string>
+    <string name="pharmNameLoading">Pharmacy name...</string>
+    <string name="pharmPhoneLoading">01012345678..</string>
+    <string name="pharmAddressLoading">14 Street Name, City, Governerate...</string>
+    <string name="pharmNearestLandmarkLoading">Nearest landmark...</string>
+    <string name="pharmMailLoading">pharmMail@mail.com...</string>
+    <string name="app_desc">يساعدك علي ايجاد الدواء الذي تحتاجه ويخبرك بالصيدليات المتاح بها ويرشدك لأقرب صيدلية من بيتك يتواجد فيها مع عرض سعر الدواء</string>
 </resources>

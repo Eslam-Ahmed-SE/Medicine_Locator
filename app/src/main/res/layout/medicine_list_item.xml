@@ -8,6 +8,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginEnd="15dp"
     android:layout_marginBottom="5dp"
+    android:animateLayoutChanges="true"
     android:background="@drawable/custom_container"
     android:elevation="8dp"
     android:paddingStart="20dp"
@@ -17,29 +18,44 @@
 
     <TextView
         android:id="@+id/itemName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textAlignment="viewStart"
         android:textColor="@android:color/primary_text_light"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:transitionName="itemName"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/itemPrice"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="TextView"
         android:textColor="#EF92A7"
         android:textSize="12sp"
         android:textStyle="bold"
+        android:transitionName="itemPrice"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemName" />
+
+    <TextView
+        android:id="@+id/itemAvailibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
