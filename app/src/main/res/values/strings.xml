@@ -13,4 +13,5 @@
     <string name="pharmNearestLandmarkLoading">Nearest landmark...</string>
     <string name="pharmMailLoading">pharmMail@mail.com...</string>
     <string name="app_desc">يساعدك علي ايجاد الدواء الذي تحتاجه ويخبرك بالصيدليات المتاح بها ويرشدك لأقرب صيدلية من بيتك يتواجد فيها مع عرض سعر الدواء</string>
+    <string name="imgLogo">Image logo</string>
 </resources>
