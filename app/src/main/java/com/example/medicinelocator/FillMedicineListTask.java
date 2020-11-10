@@ -2,16 +2,8 @@ package com.example.medicinelocator;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.transition.Slide;
-import android.transition.Transition;
-import android.transition.TransitionManager;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
@@ -84,7 +76,7 @@ public class FillMedicineListTask extends AsyncTask<Void,Void,Void> {
 //                transition.addTarget(recent_container);
 //                TransitionManager.beginDelayedTransition((ViewGroup) recent_container.getParent(), transition);
 
-                mainActivity.showItemContaier();
+                mainActivity.showItemContainer();
 
 //                id.setText(contacts[0].id);
 //                name.setText(contacts[0].name);
