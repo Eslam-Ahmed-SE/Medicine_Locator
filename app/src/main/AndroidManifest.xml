@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineLocator"
         android:usesCleartextTraffic="true">
-        <activity android:name=".medicineItemView"></activity>
+        <activity android:name=".medicineItemView" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
