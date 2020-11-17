@@ -1,7 +1,6 @@
-package com.example.medicinelocator;
+package com.example.medicinelocator.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,15 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.medicinelocator.FillPharmacyListTask;
+import com.example.medicinelocator.R;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
-public class medicineItemView extends AppCompatActivity {
+public class MedicineItemViewActivity extends AppCompatActivity {
 
     static final String EXTRA_ITEM_NAME = "itemNameAnim";
     static final String EXTRA_ITEM_PRICE = "itemPriceAnim";

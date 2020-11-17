@@ -1,4 +1,4 @@
-package com.example.medicinelocator;
+package com.example.medicinelocator.dataModels;
 
 public class Pharmacy {
     String id;

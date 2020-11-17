@@ -1,25 +1,29 @@
 package com.example.medicinelocator;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.util.Pair;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.medicinelocator.dataModels.Pharmacy;
 
 import java.util.List;
 
 public class PharmacyListAdapter extends RecyclerView.Adapter<PharmacyListAdapter.itemViewHolder>  {
     List<Pharmacy> pharms;
+    Context context;
+    int lastPosition;
 
-    public PharmacyListAdapter(List<Pharmacy> mPharms) {
+    public PharmacyListAdapter(List<Pharmacy> mPharms, Context mContext) {
         pharms = mPharms;
+        context = mContext;
+        lastPosition = -1;
     }
 
     @NonNull
@@ -51,21 +55,32 @@ public class PharmacyListAdapter extends RecyclerView.Adapter<PharmacyListAdapte
     @Override
     public void onBindViewHolder(@NonNull PharmacyListAdapter.itemViewHolder holder, int position) {
 
-            String name = pharms.get(position).getName();
-            String phone = pharms.get(position).getPhone();
-            String address = pharms.get(position).getAddress();
-            String landmark = pharms.get(position).getLandmark();
-            String mail = pharms.get(position).getMail();
+        String name = pharms.get(position).getName();
+        String phone = pharms.get(position).getPhone();
+        String address = pharms.get(position).getAddress();
+        String landmark = pharms.get(position).getLandmark();
+        String mail = pharms.get(position).getMail();
 
 
-            holder.nameTxt.setText(name);
-            holder.phoneTxt.setText(phone);
-            holder.addressTxt.setText(address);
-            holder.landmarkTxt.setText(landmark);
-            holder.mailTxt.setText(mail);
+        holder.nameTxt.setText(name);
+        holder.phoneTxt.setText(phone);
+        holder.addressTxt.setText(address);
+        holder.landmarkTxt.setText(landmark);
+        holder.mailTxt.setText(mail);
 
 
+        Animation animation = AnimationUtils.loadAnimation(context,
+                (position > lastPosition) ? R.anim.up_from_bottom
+                        : R.anim.down_from_top);
+        holder.itemView.startAnimation(animation);
+        lastPosition = position;
 
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(@NonNull PharmacyListAdapter.itemViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        holder.itemView.clearAnimation();
     }
 
     @Override

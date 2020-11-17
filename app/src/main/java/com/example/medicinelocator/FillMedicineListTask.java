@@ -6,6 +6,9 @@ import android.util.Log;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicinelocator.activities.MainActivity;
+import com.example.medicinelocator.dataModels.Medicine;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,16 +1,13 @@
 package com.example.medicinelocator;
 
 import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.medicinelocator.activities.MedicineItemViewActivity;
+import com.example.medicinelocator.dataModels.Medicine;
 
 public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapter.itemViewHolder>  {
     Medicine medicines[];
@@ -40,7 +40,7 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(context, R.anim.medicine_item_clicked));
 
-                Intent i = new Intent(parent.getContext(), medicineItemView.class);
+                Intent i = new Intent(parent.getContext(), MedicineItemViewActivity.class);
                 i.putExtra("name", ((TextView)listItem.findViewById(R.id.itemName)).getText().toString());
                 i.putExtra("price", ((TextView)listItem.findViewById(R.id.itemPrice)).getText().toString());
                 i.putExtra("availability", ((TextView)listItem.findViewById(R.id.itemAvailibility)).getText().toString());

@@ -2,10 +2,11 @@ package com.example.medicinelocator;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.medicinelocator.activities.MedicineItemViewActivity;
+import com.example.medicinelocator.dataModels.Pharmacy;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,11 +26,11 @@ public class FillPharmacyListTask extends AsyncTask<Void,Void,Void> {
     RecyclerView pharmList;
     List<Pharmacy> pharms;
     String pharmIDs;
-    medicineItemView context;
+    MedicineItemViewActivity context;
 
     int counter;
 
-    public FillPharmacyListTask(RecyclerView mPharmList, String mPharmIDs, medicineItemView mContext) {
+    public FillPharmacyListTask(RecyclerView mPharmList, String mPharmIDs, MedicineItemViewActivity mContext) {
         pharmList = mPharmList;
         pharmIDs = mPharmIDs;
         context = mContext;
@@ -86,7 +87,7 @@ public class FillPharmacyListTask extends AsyncTask<Void,Void,Void> {
         super.onPostExecute(aVoid);
         Log.i("inf", "post executed");
         if ( pharms !=null ){
-            PharmacyListAdapter mAdapter = new PharmacyListAdapter(pharms);
+            PharmacyListAdapter mAdapter = new PharmacyListAdapter(pharms, context);
             pharmList.setAdapter(mAdapter);
             context.showPharmList();
 
