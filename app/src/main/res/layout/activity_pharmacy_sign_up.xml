@@ -27,18 +27,20 @@
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="35dp"
+            android:layout_marginEnd="25dp"
             android:text="@string/pharmSignupNameLabel"
+            android:textAlignment="textStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/sigupPharmName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -52,22 +54,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            android:autofillHints="@string/pharmSignupNameLabel" />
 
         <TextView
             android:id="@+id/textView8"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
             android:text="@string/pharmSignupAddressLabel"
+            android:textAlignment="textStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+            app:layout_constraintTop_toBottomOf="@+id/sigupPharmName" />
 
         <EditText
-            android:id="@+id/editTextTextPostalAddress"
+            android:id="@+id/sigupPharmAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -81,22 +86,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            android:autofillHints="@string/pharmSignupAddressLabel" />
 
         <TextView
             android:id="@+id/textView9"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
             android:text="@string/pharmSignupNearestLandMarkLabel"
+            android:textAlignment="textStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/sigupPharmAddress" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/sigupPharmLandmark"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -105,12 +113,13 @@
             android:background="@drawable/custom_search"
             android:ems="10"
             android:hint="@string/pharmSignupNearestLandMarkLabel"
-            android:inputType="textPersonName"
+            android:inputType="textShortMessage"
             android:padding="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintTop_toBottomOf="@+id/textView9"
+            android:autofillHints="@string/pharmSignupNearestLandMarkLabel" />
 
         <TextView
             android:id="@+id/textView10"
@@ -120,10 +129,10 @@
             android:layout_marginTop="25dp"
             android:text="@string/governerate"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+            app:layout_constraintTop_toBottomOf="@+id/sigupPharmLandmark" />
 
         <Spinner
-            android:id="@+id/spinner3"
+            android:id="@+id/sigupPharmGovSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -142,28 +151,29 @@
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <Spinner
-            android:id="@+id/spinner4"
+            android:id="@+id/sigupPharmCitySpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView11"
-            app:layout_constraintStart_toEndOf="@+id/textView11"
+            app:layout_constraintStart_toStartOf="@+id/sigupPharmGovSpinner"
             app:layout_constraintTop_toTopOf="@+id/textView11" />
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
             android:text="@string/pharmSignupPhoneLabel"
+            android:textAlignment="textStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
         <EditText
-            android:id="@+id/editTextPhone"
+            android:id="@+id/sigupPharmPhone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -177,22 +187,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            android:importantForAutofill="no"
+            />
 
         <TextView
             android:id="@+id/textView13"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
             android:text="@string/pharmSignupEmailLabel"
+            android:textAlignment="textStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+            app:layout_constraintTop_toBottomOf="@+id/sigupPharmPhone" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/sigupPharmEmail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -210,18 +224,20 @@
 
         <TextView
             android:id="@+id/textView14"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
             android:text="@string/password"
+            android:textAlignment="textStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/sigupPharmEmail" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/sigupPharmPass"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -241,7 +257,7 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="150dp"
             android:backgroundTint="@color/pink"
             android:onClick="signupClicked"
@@ -254,7 +270,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/signupPharmError" />
+
+        <TextView
+            android:id="@+id/signupPharmError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/error"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="18sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sigupPharmPass" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

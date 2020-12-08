@@ -13,15 +13,15 @@
     android:elevation="8dp"
     android:paddingStart="20dp"
     android:paddingTop="15dp"
-    android:paddingEnd="0dp"
+    android:paddingEnd="20dp"
     android:paddingBottom="15dp">
 
     <TextView
         android:id="@+id/pharmName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Pharmacy name"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textColor="@android:color/primary_text_light"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -32,10 +32,11 @@
 
     <TextView
         android:id="@+id/pharmPhone"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="01012345678"
+        android:textAlignment="center"
         android:textColor="#EF92A7"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -44,6 +45,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pharmName" />
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/pink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pharmPhone" />
+
+    <ImageView
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:tint="@color/pink"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pharmMail"
+        app:srcCompat="@drawable/call" />
+
+    <TextView
+        android:id="@+id/pharmMail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="pharm_mail@mail.com"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -51,19 +85,20 @@
         android:layout_marginTop="5dp"
         android:text="@string/address"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pharmPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/pharmMail" />
 
     <TextView
         android:id="@+id/pharmAddress"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="15 sasdsa  sa das dsadasd sad"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/pharmPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/pharmMail" />
 
     <TextView
         android:id="@+id/textView7"
@@ -72,29 +107,19 @@
         android:layout_marginTop="5dp"
         android:text="@string/nearest_landmark"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/pharmAddress" />
 
     <TextView
         android:id="@+id/pharmLandmark"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="sadasd asdas"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <TextView
-        android:id="@+id/pharmMail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="pharm_mail@mail.com"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/pharmAddress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

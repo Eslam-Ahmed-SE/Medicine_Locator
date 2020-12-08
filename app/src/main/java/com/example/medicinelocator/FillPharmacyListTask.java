@@ -1,11 +1,13 @@
 package com.example.medicinelocator;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicinelocator.activities.MedicineItemViewActivity;
+import com.example.medicinelocator.dataModels.Cities;
 import com.example.medicinelocator.dataModels.Pharmacy;
 
 import org.json.JSONArray;
@@ -22,16 +24,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class FillPharmacyListTask extends AsyncTask<Void,Void,Void> {
-    RecyclerView pharmList;
+public abstract class FillPharmacyListTask extends AsyncTask<Void,Void,Void> {
     List<Pharmacy> pharms;
     String pharmIDs;
-    MedicineItemViewActivity context;
+    Context context;
 
     int counter;
 
-    public FillPharmacyListTask(RecyclerView mPharmList, String mPharmIDs, MedicineItemViewActivity mContext) {
-        pharmList = mPharmList;
+    public FillPharmacyListTask(String mPharmIDs, Context mContext) {
         pharmIDs = mPharmIDs;
         context = mContext;
 
@@ -85,28 +85,12 @@ public class FillPharmacyListTask extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        Log.i("inf", "post executed");
-        if ( pharms !=null ){
-            PharmacyListAdapter mAdapter = new PharmacyListAdapter(pharms, context);
-            pharmList.setAdapter(mAdapter);
-            context.showPharmList();
-
-//                Transition transition = new Slide(Gravity.TOP);
-//                transition.setDuration(3000);
-//                transition.addTarget(recent_container);
-//                TransitionManager.beginDelayedTransition((ViewGroup) recent_container.getParent(), transition);
-
-//            recent_container.setVisibility(View.VISIBLE);
-
-
-//                id.setText(contacts[0].id);
-//                name.setText(contacts[0].name);
-//                mail.setText(contacts[0].email);
-//                mobile.setText(contacts[0].mobile);
-        }
+        onResponseReceived(pharms);
 
 
     }
+
+    public abstract void onResponseReceived(List<Pharmacy> mPharms);
 
     private void parseJson(String JSONString) {
 

@@ -8,13 +8,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.medicinelocator.FillPharmacyListTask;
+import com.example.medicinelocator.PharmacyListAdapter;
 import com.example.medicinelocator.R;
+import com.example.medicinelocator.dataModels.Pharmacy;
 import com.facebook.shimmer.ShimmerFrameLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MedicineItemViewActivity extends AppCompatActivity {
 
@@ -23,6 +30,7 @@ public class MedicineItemViewActivity extends AppCompatActivity {
 
     private TextView name;
     private TextView price;
+    private TextView itemNotAvailable;
     private RecyclerView pharmList;
     private ShimmerFrameLayout pharmacies_loading;
 
@@ -35,12 +43,38 @@ public class MedicineItemViewActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         name.setText(bundle.getString("name"));
-        price.setText(bundle.getString("price"));
+        price.setText(getString(R.string.price, bundle.getString("price")));
         String availability = bundle.getString("availability");
+        Log.i("inf", "availability " + availability);
+        String city = bundle.getString("city");
+        String gov = bundle.getString("gov");
+
+//        Toast.makeText(this, "city: " + city + "gov: " + gov, Toast.LENGTH_LONG).show();
 
         addAnimation();
 
-        FillPharmacyListTask pharmacyListTask = new FillPharmacyListTask(pharmList, availability, this);
+        List<Pharmacy> pharmsNearby = new ArrayList<Pharmacy> ();
+        FillPharmacyListTask pharmacyListTask = new FillPharmacyListTask( availability, this) {
+            @Override
+            public void onResponseReceived(List<Pharmacy> mPharms) {
+                Log.i("inf", "post executed");
+                if ( mPharms !=null ){
+                    for (Pharmacy pharm : mPharms){
+                        if (pharm.getCity().equals(city)  ) {
+                            pharmsNearby.add(pharm);
+                        }
+                    }
+                    if (pharmsNearby.size() == 0){
+                        itemNotAvailable.setVisibility(View.VISIBLE);
+                    }
+                    PharmacyListAdapter mAdapter = new PharmacyListAdapter(pharmsNearby, MedicineItemViewActivity.this);
+                    pharmList.setAdapter(mAdapter);
+                    showPharmList();
+
+
+                }
+            }
+        };
 //
         pharmacyListTask.execute();
 
@@ -64,6 +98,7 @@ public class MedicineItemViewActivity extends AppCompatActivity {
     private void initComponents() {
         name = findViewById(R.id.itemNameView);
         price = findViewById(R.id.itemPriceView);
+        itemNotAvailable = findViewById(R.id.itemNotAvailable);
 
         pharmList = findViewById(R.id.pharmList);
         pharmacies_loading = findViewById(R.id.pharmacies_loading);

@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineLocator"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.PharmacyHomeActivity"></activity>
+        <activity android:name=".activities.AddMedicine"></activity>
+        <activity android:name=".activities.PharmacyHomeActivity" />
         <activity android:name=".activities.PharmacySignUpActivity" />
         <activity android:name=".activities.PharmacySignInActivity" />
         <activity android:name=".activities.MedicineItemViewActivity" />

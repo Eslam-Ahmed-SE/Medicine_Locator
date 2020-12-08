@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicinelocator.activities.MainActivity;
 import com.example.medicinelocator.dataModels.Medicine;
+import com.example.medicinelocator.dataModels.Pharmacy;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,21 +20,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-public class FillMedicineListTask extends AsyncTask<Void,Void,Void> {
-        RecyclerView medicineList;
-        Medicine[] medicines;
-        Context context;
-        MainActivity mainActivity;
+public abstract class FillMedicineListTask extends AsyncTask<Void,Void,List<Medicine>> {
+        List<Medicine> medicines;
 
-        public FillMedicineListTask(RecyclerView mMedicineList, MainActivity mContext) {
-            medicineList = mMedicineList;
-            context = mContext;
-            mainActivity = mContext;
-        }
+    public FillMedicineListTask() {
+        medicines = new ArrayList<Medicine>();
+    }
 
-        @Override
-        protected Void doInBackground(Void... voids) {
+    @Override
+        protected List<Medicine> doInBackground(Void... voids) {
             Log.i("inf", "task started");
             String url = "http://medprices.c1.biz/api/getDrugs.php";
             HttpURLConnection con;
@@ -63,49 +61,37 @@ public class FillMedicineListTask extends AsyncTask<Void,Void,Void> {
 //                con.cl
             }
 
-            return null;
+            return medicines;
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
+        protected void onPostExecute(List<Medicine> mMedicine) {
+            super.onPostExecute(mMedicine);
             Log.i("inf", "post executed");
-            if ( medicines !=null ){
-                MedicineListAdapter mAdapter = new MedicineListAdapter(medicines,context);
-                medicineList.setAdapter(mAdapter);
-
-//                Transition transition = new Slide(Gravity.TOP);
-//                transition.setDuration(3000);
-//                transition.addTarget(recent_container);
-//                TransitionManager.beginDelayedTransition((ViewGroup) recent_container.getParent(), transition);
-
-                mainActivity.showItemContainer();
-
-//                id.setText(contacts[0].id);
-//                name.setText(contacts[0].name);
-//                mail.setText(contacts[0].email);
-//                mobile.setText(contacts[0].mobile);
-            }
+            onResponseReceived(mMedicine);
 
 
         }
 
-        private void parseJson(String JSONString) {
+    public abstract void onResponseReceived(List<Medicine> mMedicine);
+
+    private void parseJson(String JSONString) {
 
 
             try {
                 JSONObject jsonObj = new JSONObject(JSONString);
                 JSONArray jsonArr = jsonObj.getJSONArray("Drugs");
-                medicines = new Medicine[jsonArr.length()];
+//                medicines = new Medicine[jsonArr.length()];
                 for (int i=0; i<jsonArr.length(); i++){
                     JSONObject currentObj = jsonArr.getJSONObject(i);
 
                     String id = currentObj.getString("id");
-                    String name = currentObj.getString("name");
+                    String name_en = currentObj.getString("name_en");
+                    String name_ar = currentObj.getString("name_ar");
                     String price = currentObj.getString("price");
                     String availability = currentObj.getString("availability");
 
-                    medicines[i] = new Medicine(id, name, price, availability);
+                    medicines.add( new Medicine(id, name_en, name_ar, price, availability) );
                     Log.i("inf", "try parse json");
                 }
             } catch (JSONException e) {

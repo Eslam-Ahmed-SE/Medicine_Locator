@@ -1,14 +1,20 @@
 package com.example.medicinelocator;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicinelocator.dataModels.Pharmacy;
@@ -45,11 +51,12 @@ public class PharmacyListAdapter extends RecyclerView.Adapter<PharmacyListAdapte
 //                        makeSceneTransitionAnimation((Activity) parent.getContext(), p1, p2);
 //                parent.getContext().startActivity(i, options.toBundle());
 //
-//                Toast.makeText(parent.getContext(), "clicked", Toast.LENGTH_SHORT).show();
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:" + ((TextView)listItem.findViewById(R.id.pharmPhone)).getText().toString()));
+                context.startActivity(callIntent);
             }
         });
-        PharmacyListAdapter.itemViewHolder viewHolder = new PharmacyListAdapter.itemViewHolder(listItem);
-        return viewHolder;
+        return new itemViewHolder(listItem);
     }
 
     @Override
